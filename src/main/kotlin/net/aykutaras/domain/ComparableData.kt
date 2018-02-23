@@ -1,10 +1,14 @@
 package net.aykutaras.domain
 
 data class ComparableData(
-        private var left: String? = null,
-        private var right: String? = null,
         private var locked: Boolean = false
 ) {
+    var left: String? = null
+    private set
+
+    var right: String? = null
+    private set
+
     fun addDataToLeft(data: String): ComparableData {
         checkIfLocked()
 

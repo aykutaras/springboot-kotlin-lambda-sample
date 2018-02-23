@@ -18,7 +18,7 @@ class GetResultHandler(private val store: ComparableDataStore,
         return GetResultResponse("")
     }
 
-    fun lockAndGetData(id: String): ComparableData {
+    private fun lockAndGetData(id: String): ComparableData {
         val comparableData = store.get(id)
         comparableData.lock()
         store.put(id, comparableData)
@@ -26,7 +26,7 @@ class GetResultHandler(private val store: ComparableDataStore,
         return comparableData
     }
 
-    fun unLockData(id: String) {
+    private fun unLockData(id: String) {
         val comparableData = store.get(id)
         comparableData.unlock()
         store.put(id, comparableData)
