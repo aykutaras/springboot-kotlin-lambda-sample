@@ -74,3 +74,16 @@ dependencyManagement {
   }
 }
 
+// Task for building the zip file for upload
+task buildZip(type: Zip) {
+  // set the base name of the zip file
+  baseName = "${project.name}"
+  from compileGroovy
+  from processResources
+  into('lib') {
+    from configurations.runtime
+  }
+}
+
+build.dependsOn buildZip
+

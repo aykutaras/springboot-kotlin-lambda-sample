@@ -1,4 +1,4 @@
-service: aaras-springboot
+service: springboot-kotlin-lambda
 
 provider:
   name: aws
@@ -8,13 +8,26 @@ provider:
   region: eu-west-1
 
 package:
-  artifact: build/distributions/springboot-kotlin-lambda.zip
+  artifact: build/distributions/springboot-kotlin-lambda-1.0.0.zip
 
 functions:
   leftComparer:
-    handler: com.serverless.LambdaHandler
+    handler: net.aykutaras.lambda.LeftStoreLambdaHandler
     events:
       - http:
           path: api/v1/{id}/left
           method: post
 
+  rightComparer:
+    handler: net.aykutaras.lambda.RightStoreLambdaHandler
+    events:
+      - http:
+          path: api/v1/{id}/right
+          method: post
+
+  diffResults:
+    handler: net.aykutaras.lambda.DiffLambdaHandler
+    events:
+      - http:
+          path: api/v1/{id}
+          method: get

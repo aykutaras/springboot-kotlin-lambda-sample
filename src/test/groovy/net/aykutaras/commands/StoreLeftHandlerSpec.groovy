@@ -44,7 +44,10 @@ class StoreLeftHandlerSpec extends Specification {
   def "try to set locked data and get exception"() {
     given:
     def id = UUID.randomUUID().toString();
-    def data = new ComparableData("Left Data", "Right Data", true)
+    def data = new ComparableData()
+    data.addDataToLeft("Simple Data")
+        .addDataToRight("Simple Data")
+        .lock()
     store.put id, data
     def request = new LeftStore(id, "New Data")
 
