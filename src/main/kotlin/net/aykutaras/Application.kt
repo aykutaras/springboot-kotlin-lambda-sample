@@ -14,25 +14,25 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @EnableSwagger2
 @ComponentScan("net.aykutaras")
 @SpringBootApplication
-open class Application
+open class Application {
+    @Bean
+    open fun starterApi(): Docket {
+        return Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("net.aykutaras.controller"))
+                .build()
+    }
+
+    private fun apiInfo(): ApiInfo {
+        return ApiInfoBuilder()
+                .title("Springboot Kotlin")
+                .description("Springboot Kotlin Sample with Heroku integration")
+                .version("1.0.0")
+                .build()
+    }
+}
 
 fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
-}
-
-@Bean
-fun starterApi(): Docket {
-    return Docket(DocumentationType.SWAGGER_2)
-            .apiInfo(apiInfo())
-            .select()
-            .apis(RequestHandlerSelectors.basePackage("net.aykutaras"))
-            .build()
-}
-
-private fun apiInfo(): ApiInfo {
-    return ApiInfoBuilder()
-            .title("Lambda Kotlin")
-            .description("Lambda kotlin samples with spring boot")
-            .version("1.0.0")
-            .build()
 }
