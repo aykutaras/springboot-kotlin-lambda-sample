@@ -1,3 +1,4 @@
 package net.aykutaras.messages.commands
 
-data class LeftStore(val data: String)
+data class LeftStore(val id: String,
+                     val data: String)
