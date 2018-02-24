@@ -1,5 +1,5 @@
 package net.aykutaras.domain
 
 interface ComparerService {
-    fun compare(comparableData: ComparableData)
+    fun compare(comparableData: ComparableData): String
 }
