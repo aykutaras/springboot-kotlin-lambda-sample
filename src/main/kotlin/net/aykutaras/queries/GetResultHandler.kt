@@ -13,9 +13,10 @@ class GetResultHandler(private val store: ComparableDataStore,
                        private val comparer: ComparerService) : Handler<GetResult, GetResultResponse> {
     override fun handle(request: GetResult): GetResultResponse {
         val data = lockAndGetData(request.id)
-        comparer.compare(data)
+        val comparisonResult = comparer.compare(data)
         unLockData(request.id)
-        return GetResultResponse("")
+
+        return GetResultResponse(comparisonResult)
     }
 
     private fun lockAndGetData(id: String): ComparableData {

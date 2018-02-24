@@ -11,7 +11,8 @@ class CacheStore : ComparableDataStore {
     }
 
     override fun get(id: String): ComparableData {
-        return store.getOrElse(id) { ComparableData()}
+        val defaultValue = { ComparableData() }
+        return store.getOrElse(id, defaultValue)
     }
 
     override fun put(id: String, data: ComparableData) {

@@ -74,7 +74,7 @@ class CacheStoreSpec extends Specification {
     def storedData = store.get id
 
     then:
-    storedData.left == null
-    storedData.right == null
+    storedData.getLeft() == null
+    storedData.getRight() == null
   }
 }

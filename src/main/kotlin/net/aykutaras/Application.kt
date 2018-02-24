@@ -27,7 +27,7 @@ open class Application {
     private fun apiInfo(): ApiInfo {
         return ApiInfoBuilder()
                 .title("Springboot Kotlin")
-                .description("Springboot Kotlin Sample with Heroku integration")
+                .description("Sample diff algorithm for testing springboot with kotlin")
                 .version("1.0.0")
                 .build()
     }
