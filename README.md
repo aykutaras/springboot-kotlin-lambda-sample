@@ -1,5 +1,7 @@
 # springboot-kotlin-lambda-sample
 
+[![Build Status](https://travis-ci.org/aykutaras/springboot-kotlin-lambda-sample.svg?branch=master)](https://travis-ci.org/aykutaras/springboot-kotlin-lambda-sample)
+
 Sample application for spring boot with kotlin. It can be deployed to aws lambda. 
 It implements basic spring boot functionality and a swagger ui for api references
 
