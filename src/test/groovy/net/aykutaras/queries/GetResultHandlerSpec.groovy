@@ -46,10 +46,10 @@ class GetResultHandlerSpec extends Specification {
 
   def "Should return error response for null side"() {
     given:
-    storeLeftHandler.handle(new LeftStore("ID", "Sample String"))
+    storeLeftHandler.handle(new LeftStore("ID2", "Sample String"))
 
     when:
-    def result = handler.handle(new GetResult("ID"))
+    def result = handler.handle(new GetResult("ID2"))
 
     then:
     result.response == "One of the sides are null"

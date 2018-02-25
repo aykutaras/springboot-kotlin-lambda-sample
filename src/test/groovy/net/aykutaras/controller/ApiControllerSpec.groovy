@@ -1,5 +1,6 @@
 package net.aykutaras.controller
 
+import net.aykutaras.controller.request.DataStoreRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.embedded.LocalServerPort
 import org.springframework.boot.test.context.SpringBootTest
@@ -14,14 +15,15 @@ class ApiControllerSpec extends Specification {
   @Autowired
   TestRestTemplate restTemplate
 
-  def "testing api testing"() {
+  def "api testing sample for diff"() {
     given:
-    def a = 1
+    restTemplate.postForEntity("http://localhost:$port/v1/diff/SOME_ID/left", new DataStoreRequest("Sample String"), String.class)
+    restTemplate.postForEntity("http://localhost:$port/v1/diff/SOME_ID/right", new DataStoreRequest("Sample String"), String.class)
 
     when:
-    restTemplate.getForObject("http://localhost:$port/v1/diff/left", String.class)
+    def response = restTemplate.getForObject("http://localhost:$port/v1/diff/SOME_ID", String.class)
 
     then:
-    1==1
+    response == '{"response":"Sides are same"}'
   }
 }
